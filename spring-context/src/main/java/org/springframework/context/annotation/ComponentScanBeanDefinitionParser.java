@@ -45,6 +45,7 @@ import org.springframework.util.ReflectionUtils;
 import org.springframework.util.StringUtils;
 
 /**
+ * 这时个很重要的类，主要可以处理自定义标签  context:component-scan  扫描 configuration 注解
  * Parser for the {@code <context:component-scan/>} element.
  *
  * @author Mark Fisher

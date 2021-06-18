@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+
+	<bean id="userManager" class="com.wpz.aop.service.impl.UserManagerServiceImpl"/>
+	<bean id="xmlAdvice" class="com.wpz.aop.XmlAdvice"/>
+
+
+	<aop:config>
+		<aop:aspect id="aspect" ref="xmlAdvice">
+			<aop:pointcut id="pointUserMgr" expression="execution(* com.wpz.aop.*.find*(..))"/>
+			<aop:before method="doBefore" pointcut-ref="pointUserMgr"/>
+			<aop:after method="doAfter" pointcut-ref="pointUserMgr"/>
+			<aop:around method="doAround" pointcut-ref="pointUserMgr"/>
+			<aop:after-returning method="doReturn" pointcut-ref="pointUserMgr"/>
+			<aop:after-throwing method="doThrowing" throwing="ex" pointcut-ref="pointUserMgr"/>
+		</aop:aspect>
+	</aop:config>
+
+</beans>

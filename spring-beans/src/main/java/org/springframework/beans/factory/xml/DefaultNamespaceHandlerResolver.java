@@ -182,7 +182,8 @@ public class DefaultNamespaceHandlerResolver implements NamespaceHandlerResolver
 
 	@Override
 	public String toString() {
-		return "NamespaceHandlerResolver using mappings " + getHandlerMappings();
+//		return "NamespaceHandlerResolver using mappings " + getHandlerMappings();
+		return "";
 	}
 
 }
