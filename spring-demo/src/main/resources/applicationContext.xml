@@ -7,26 +7,9 @@
 	   http://www.springframework.org/schema/context
 	   https://www.springframework.org/schema/context/spring-context.xsd">
 
-		<bean id="person2" class="com.wpz.test.Person2" scope="prototype">
-			<property name="tesName" value="张三2"/>
-		</bean>
-	<context:component-scan base-package="com.wpz.test"/>
-<!--	<bean id="person" class="com.wpz.test.Person">-->
-<!--		<property name="name" value="张三"/>-->
-<!--		<property name="age" value="20"/>-->
-<!--	</bean>-->
-	<!--	<bean id="MyInstance" class="com.wpz.test.MyInstance">-->
-	<!--	</bean>-->
-
-<!--	<bean id="myFactoryBean" class="com.wpz.test.MyFactoryBean"/>-->
-<!--	<bean id="myBeanFactoryProcessor" class="com.wpz.test.MyBeanFactoryPostProcessor"/>-->
-
-	<!--		<bean id="myPropertySet" class="com.wpz.test.MyPropertySet"/>-->
-	<!--		<bean id="atest" class="com.wpz.test.A">-->
-	<!--			<property name="b" ref="btest"/>-->
-	<!--		</bean>-->
-	<!--		<bean id="btest" class="com.wpz.test.B">-->
-	<!--			<property name="a" ref="atest"/>-->
-	<!--		</bean>-->
-	<!--	<bean id="personPostProcessor" class="com.wpz.test.MyBeanPostProcessor"/>-->
+	<context:component-scan base-package="com.wpz.test" />
+	<bean id="person" class="com.wpz.test.Person">
+		<property name="name" value="张三"/>
+		<property name="age" value="20"/>
+	</bean>
 </beans>

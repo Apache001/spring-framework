@@ -1,18 +1,11 @@
 package com.wpz.test;
 
-import lombok.Data;
-import org.springframework.beans.factory.parsing.SourceExtractor;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
-
-import javax.annotation.Resource;
 
 /**
  * @author bytedance
  */
-//@Configuration
+@Component
 public class Person {
 
 	private Integer age;

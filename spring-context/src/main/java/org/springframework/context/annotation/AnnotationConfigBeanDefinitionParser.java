@@ -30,7 +30,7 @@ import org.springframework.lang.Nullable;
 
 /**
  * Parser for the &lt;context:annotation-config/&gt; element.
- *
+ * 解析annotation-conf 标签，component-scan 也包含了此功能
  * @author Mark Fisher
  * @author Juergen Hoeller
  * @author Christian Dupuis

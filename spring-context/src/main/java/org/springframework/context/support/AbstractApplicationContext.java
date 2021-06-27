@@ -517,9 +517,11 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 	public void refresh() throws BeansException, IllegalStateException {
 		synchronized (this.startupShutdownMonitor) {
 			// Prepare this context for refreshing.
+			//spring 容器启动的一些准备工作，设值启动标志位，添加一些监听器
 			prepareRefresh();
 
 			// Tell the subclass to refresh the internal bean factory.
+			//获取一个beanFactory,这里面有一个核心步骤 loadBeanDefinitions 会对配置的xml进行解析 生成 BeanDefination
 			ConfigurableListableBeanFactory beanFactory = obtainFreshBeanFactory();
 
 			// Prepare the bean factory for use in this context.
@@ -527,30 +529,38 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader
 
 			try {
 				// Allows post-processing of the bean factory in context subclasses.
+				//对beanFactory 做一些前置工作
 				postProcessBeanFactory(beanFactory);
 
 				// Invoke factory processors registered as beans in the context.
+				//比较重要，执行BeanFactoryPostProcessor,常用的一些注解 @AutoWire，@Import 等都是在这里进行解析
 				invokeBeanFactoryPostProcessors(beanFactory);
 
 				// Register bean processors that intercept bean creation.
+				//注册一些BeanPostProcessor，这里仅仅只是注册，并不会进行执行，最终在getBean中尽心调用
 				registerBeanPostProcessors(beanFactory);
 
 				// Initialize message source for this context.
+				//国际化操作
 				initMessageSource();
 
 				// Initialize event multicaster for this context.
+				//初始化监听器操作
 				initApplicationEventMulticaster();
 
 				// Initialize other special beans in specific context subclasses.
+				//hook method，spring本身没有实现，springboot 里面会有相应的实现
 				onRefresh();
 
 				// Check for listener beans and register them.
 				registerListeners();
 
 				// Instantiate all remaining (non-lazy-init) singletons.
+				//spring核心步骤，初始化剩下的单实例（非懒加载的）
 				finishBeanFactoryInitialization(beanFactory);
 
 				// Last step: publish corresponding event.
+				//整个刷新过程技术，通知生命周期处理器lifecycleProcessor刷新过程，同时发出ContextRefreshEvent通知别人
 				finishRefresh();
 			}
 

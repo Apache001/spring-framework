@@ -9,10 +9,9 @@
 	<bean id="userManager" class="com.wpz.aop.service.impl.UserManagerServiceImpl"/>
 	<bean id="xmlAdvice" class="com.wpz.aop.XmlAdvice"/>
 
-
 	<aop:config>
 		<aop:aspect id="aspect" ref="xmlAdvice">
-			<aop:pointcut id="pointUserMgr" expression="execution(* com.wpz.aop.*.find*(..))"/>
+			<aop:pointcut id="pointUserMgr" expression="execution(* com..*(..))"/>
 			<aop:before method="doBefore" pointcut-ref="pointUserMgr"/>
 			<aop:after method="doAfter" pointcut-ref="pointUserMgr"/>
 			<aop:around method="doAround" pointcut-ref="pointUserMgr"/>
